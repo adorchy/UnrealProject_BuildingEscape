@@ -1,4 +1,11 @@
 // Copryright Arnaud d_Orchymont 2017
+/*********************************************************************************************************************
+PURPOSE: Class whose purpose is to rotate the linked actor when the player position objects at a specific place and
+whose total mass is superior to a specific threshold. This is the Blueprint version of OpenDoorActorWeight class, 
+allows to rotate the actor smoothly by using a time line.
+INPUT: ATriggerVolume
+
+**********************************************************************************************************************/
 
 #pragma once
 

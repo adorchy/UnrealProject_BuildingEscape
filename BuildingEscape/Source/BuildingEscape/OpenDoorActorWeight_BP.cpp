@@ -35,11 +35,12 @@ void UOpenDoorActorWeight_BP::TickComponent(float DeltaTime, ELevelTick TickType
 	if (GetTotalMassOfActorsOnPlate() >= 40.f) 
 	{
 		OnOpenRequest.Broadcast();
-		LastDoorOpenTime= GetWorld()->GetTimeSeconds();
+		LastDoorOpenTime= GetWorld()->GetTimeSeconds(); // create to have possibillity to delay the return of the actor to his initial state
 	}
 
+	
 	if (InitialRotation != GetOwner()->GetActorRotation() && 
-		LastDoorOpenTime != 0.0 &&
+		LastDoorOpenTime != 0.0 && // prevent the event to trigger when game start
 		GetWorld()->GetTimeSeconds()>LastDoorOpenTime) 
 	{	
 		OnCloseRequest.Broadcast();
@@ -47,6 +48,9 @@ void UOpenDoorActorWeight_BP::TickComponent(float DeltaTime, ELevelTick TickType
 
 }
 
+/*
+Allow to compute the total mass of actor(s) positionned on a trigger box
+*/
 float UOpenDoorActorWeight_BP::GetTotalMassOfActorsOnPlate() {
 
 	float TotalMass = 0;
